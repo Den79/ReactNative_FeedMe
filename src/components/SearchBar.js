@@ -4,13 +4,26 @@ import { EvilIcons } from "@expo/vector-icons"; // https://expo.github.io/vector
 
 const SearchBar = () => {
   return (
-    <View>
-      <EvilIcons name="search" />
-      <TextInput placeholder="search" />
+    <View style={styles.background}>
+      <EvilIcons style={styles.icon} name="search" />
+      <TextInput style={styles.input} placeholder="search" />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  background: {
+    flexDirection: "row",
+    height: 50
+  },
+  input: {
+    flex: 1
+  },
+  icon: {
+    fontSize: 35,
+    alignSelf: "center",
+    marginHorizontal: 10
+  }
+});
 
 export default SearchBar;
