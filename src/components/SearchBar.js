@@ -2,11 +2,17 @@ import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { EvilIcons } from "@expo/vector-icons"; // https://expo.github.io/vector-icons/
 
-const SearchBar = () => {
+const SearchBar = ({ term, onTermChange }) => {
   return (
     <View style={styles.background}>
       <EvilIcons style={styles.icon} name="search" />
-      <TextInput style={styles.input} placeholder="search" />
+      <TextInput
+        value={term}
+        style={styles.input}
+        placeholder="search"
+        onChangeText={newTerm => onTermChange(newTerm)}
+        //onChangeText={a => console.log(a)}
+      />
     </View>
   );
 };
