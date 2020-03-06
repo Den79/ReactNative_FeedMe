@@ -10,14 +10,21 @@ const SearchScreen = () => {
   const searchAPI = async () => {
     const response = await yelp.get("search", {
       params: {
-        limit: 1,
+        limit: 50,
         term: term,
         location: "vancouver"
       }
     });
     setBusinesses(response.data.businesses);
-    console.log(businesses); //TEST
+    console.log(businesses);
   };
+
+  useEffect(() => {
+    searchAPI();
+  }, []);
+  // [] empty array - means that function will be executed ONLY ONCE, when component first rendered
+  // Important: if use [value] -> function will be executed, when value changed
+  //console.log(businesses);
 
   return (
     <View>
