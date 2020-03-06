@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, FlatList, Text } from "react-native";
 import SearchBar from "../components/SearchBar";
 import yelp from "../api/yelp";
 
@@ -16,7 +16,7 @@ const SearchScreen = () => {
       }
     });
     setBusinesses(response.data.businesses);
-    console.log(businesses);
+    //console.log(businesses);
   };
 
   useEffect(() => {
@@ -24,7 +24,6 @@ const SearchScreen = () => {
   }, []);
   // [] empty array - means that function will be executed ONLY ONCE, when component first rendered
   // Important: if use [value] -> function will be executed, when value changed
-  //console.log(businesses);
 
   return (
     <View>
@@ -35,6 +34,13 @@ const SearchScreen = () => {
         }}
         onTermSubmit={() => {
           searchAPI();
+        }}
+      />
+      <FlatList
+        data={businesses}
+        keyExtractor={business => business.id}
+        renderItem={({ item }) => {
+          return <Text>{item.name}</Text>;
         }}
       />
     </View>
