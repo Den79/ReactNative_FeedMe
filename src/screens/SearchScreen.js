@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList, Text } from "react-native";
 import SearchBar from "../components/SearchBar";
 import yelp from "../api/yelp";
 import PriceResultList from "../components/PriceResultList";
+import { ScrollView } from "react-native-gesture-handler";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
@@ -33,7 +34,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchBar
         term={term}
         onTermChange={newTerm => {
@@ -43,16 +44,18 @@ const SearchScreen = () => {
           searchAPI();
         }}
       />
-      <PriceResultList title={"Budget Eats"} results={filterByPrice("$")} />
-      <PriceResultList title={"Average"} results={filterByPrice("$$")} />
-      <PriceResultList
-        title={"Gettin' Pricey"}
-        results={filterByPrice("$$$")}
-      />
-      <PriceResultList
-        title={"Once in a Blue Moon"}
-        results={filterByPrice("$$$$")}
-      />
+      <ScrollView>
+        <PriceResultList title={"Budget Eats"} results={filterByPrice("$")} />
+        <PriceResultList title={"Average"} results={filterByPrice("$$")} />
+        <PriceResultList
+          title={"Gettin' Pricey"}
+          results={filterByPrice("$$$")}
+        />
+        <PriceResultList
+          title={"Once in a Blue Moon"}
+          results={filterByPrice("$$$$")}
+        />
+      </ScrollView>
     </View>
   );
 };
