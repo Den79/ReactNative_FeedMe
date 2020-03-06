@@ -53,13 +53,6 @@ const SearchScreen = () => {
         title={"Once in a Blue Moon"}
         results={filterByPrice("$$$$")}
       />
-      {/* <FlatList
-        data={businesses}
-        keyExtractor={business => business.id}
-        renderItem={({ item }) => {
-          return <Text>{item.name}</Text>;
-        }}
-      /> */}
     </View>
   );
 };
