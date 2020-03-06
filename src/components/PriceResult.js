@@ -6,6 +6,9 @@ const PriceResult = ({ result }) => {
     <View>
       <Image style={styles.image} source={{ uri: result.image_url }} />
       <Text style={styles.name}>{result.name}</Text>
+      <Text>
+        Avg. {result.rating} stars from {result.review_count} reviews
+      </Text>
     </View>
   );
 };
