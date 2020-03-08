@@ -6,7 +6,9 @@ const PriceResult = ({ result, navigation }) => {
     <View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Details");
+          id = result.id;
+          //console.log(id);
+          navigation.navigate("Details", { id });
         }}
       >
         <Image style={styles.image} source={{ uri: result.image_url }} />
