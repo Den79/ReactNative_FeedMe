@@ -5,7 +5,7 @@ import yelp from "../api/yelp";
 import PriceResultList from "../components/PriceResultList";
 import { ScrollView } from "react-native-gesture-handler";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
   const [businesses, setBusinesses] = useState([]);
 
@@ -45,13 +45,23 @@ const SearchScreen = () => {
         }}
       />
       <ScrollView>
-        <PriceResultList title={"Budget Eats"} results={filterByPrice("$")} />
-        <PriceResultList title={"Average"} results={filterByPrice("$$")} />
         <PriceResultList
+          navigation={navigation}
+          title={"Budget Eats"}
+          results={filterByPrice("$")}
+        />
+        <PriceResultList
+          navigation={navigation}
+          title={"Average"}
+          results={filterByPrice("$$")}
+        />
+        <PriceResultList
+          navigation={navigation}
           title={"Gettin' Pricey"}
           results={filterByPrice("$$$")}
         />
         <PriceResultList
+          navigation={navigation}
           title={"Once in a Blue Moon"}
           results={filterByPrice("$$$$")}
         />
